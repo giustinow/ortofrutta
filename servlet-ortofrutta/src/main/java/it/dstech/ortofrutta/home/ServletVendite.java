@@ -32,7 +32,7 @@ public class ServletVendite extends HttpServlet {
 
 	public static List<Vendite> getVendite() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String password = "melascordosempredal1993";
+		String password = "pavillion";
 		String username = "root";
 		String url = "jdbc:mysql://localhost:3306/Ortofrutta?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false";
 		Connection connessione = DriverManager.getConnection(url, username, password);
@@ -41,10 +41,9 @@ public class ServletVendite extends HttpServlet {
 		List<Vendite> elencoVendite = new ArrayList<>();
 		ResultSet risultatoQuery = statement.executeQuery();
 		while (risultatoQuery.next()) {
-			int id = risultatoQuery.getInt("id");
 			String nome = risultatoQuery.getString("nome");
 			int quantita = risultatoQuery.getInt("quantita");
-			Vendite vendite = new Vendite(id, nome, quantita);
+			Vendite vendite = new Vendite(nome, quantita);
 			elencoVendite.add(vendite);
 		}
 		connessione.close();

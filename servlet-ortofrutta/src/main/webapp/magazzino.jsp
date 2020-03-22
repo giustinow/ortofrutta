@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Magazzino.</title>
 </head>
 <style>
 table, th, td {
@@ -21,7 +21,6 @@ table, th, td {
 	%>
 	<table>
 		<tr>
-			<th>Id</th>
 			<th>Nome</th>
 			<th>Quantita</th>
 			<th>Prezzo</th>
@@ -29,7 +28,6 @@ table, th, td {
 		</tr>
 		<%for (Magazzino lista : elencoMagazzino) {	%>
 		<tr>
-			<td><%=lista.getId()%></td>
 			<td><%=lista.getNome()%></td>
 			<td><%=lista.getQuantita()%></td>
 			<td><%=lista.getPrezzo()%></td>
@@ -37,7 +35,7 @@ table, th, td {
 		</tr>
 		<%}%>
 	</table>
-	<form action="home.jsp">
+	<form action="home">
 		<input type="submit" value="Torna Indietro">
 
 	</form>

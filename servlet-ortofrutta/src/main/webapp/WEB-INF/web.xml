@@ -4,38 +4,51 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 
-<servlet>
-	<servlet-name>home</servlet-name>
-	<servlet-class>it.dstech.ortofrutta.home.Home</servlet-class>
-</servlet>
+	<servlet>
+		<servlet-name>home</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.Home</servlet-class>
+	</servlet>
 
-<servlet-mapping>
-	<servlet-name>home</servlet-name>
-	<url-pattern>/home</url-pattern>
-</servlet-mapping>
-
-
-
-<servlet>
-	<servlet-name>vendite</servlet-name>
-	<servlet-class>it.dstech.ortofrutta.home.ServletVendite</servlet-class>
-</servlet>
-
-<servlet-mapping>
-	<servlet-name>vendite</servlet-name>
-	<url-pattern>/vendite</url-pattern>
-</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
 
 
-<servlet>
-	<servlet-name>magazzino</servlet-name>
-	<servlet-class>it.dstech.ortofrutta.home.ServletMagazzino</servlet-class>
-</servlet>
 
-<servlet-mapping>
-	<servlet-name>magazzino</servlet-name>
-	<url-pattern>/magazzino</url-pattern>
-</servlet-mapping>
+	<servlet>
+		<servlet-name>vendite</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletVendite</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>vendite</servlet-name>
+		<url-pattern>/vendite</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>magazzino</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletMagazzino</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>magazzino</servlet-name>
+		<url-pattern>/magazzino</url-pattern>
+	</servlet-mapping>
+
+
+
+      
+	<servlet>
+		<servlet-name>acquisto</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletAcquisto</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>acquisto</servlet-name>
+		<url-pattern>/acquisto</url-pattern>
+	</servlet-mapping>
 
 
 

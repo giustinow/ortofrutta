@@ -1,26 +1,18 @@
 package it.dstech.ortofrutta;
 
 public class Magazzino {
-	private int id;
 	private String nome;
 	private int quantita;
 	private double prezzo;
 	private String descrizione;
 	
-	public Magazzino(int id, String nome, int quantita, double prezzo, String descrizione) {
-		super();
-		this.id = id;
+	public Magazzino(String nome, int quantita, double prezzo, String descrizione) {
 		this.nome = nome;
 		this.quantita = quantita;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getNome() {
 		return nome;
 	}

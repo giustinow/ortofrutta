@@ -21,19 +21,17 @@ table, th, td {
 	%>
 	<table>
 		<tr>
-			<th>Id</th>
 			<th>Nome</th>
 			<th>Quantita</th>
 		</tr>
 		<%for (Vendite lista : elencoVendite) {	%>
 		<tr>
-			<td><%=lista.getId()%></td>
 			<td><%=lista.getNome()%></td>
 			<td><%=lista.getQuantita()%></td>
 		</tr>
 		<%}%>
 	</table>
-	<form action="home.jsp">
+	<form action="home">
 		<input type="submit" value="Torna Indietro">
 
 	</form>

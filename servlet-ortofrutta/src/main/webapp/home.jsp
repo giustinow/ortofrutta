@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-
+<%@page import="it.dstech.ortofrutta.Magazzino"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,6 +95,9 @@ input.Vendite {
 </head>
 
 <body>
+	<%
+		List<String> lista = (List<String>) request.getAttribute("magazzino");
+	%>
 	<div class="contenuto">
 		<div class="header">
 			<div class="titolo">
@@ -109,9 +113,24 @@ input.Vendite {
 		<div class=""></div>
 		<div id="Acquista">
 			<h4 class="Acquista">Acquista un prodotto</h4>
-			<form action="">
-				<input type="submit" name="acquista" value="Acquista"
-					class="Acquista">
+			
+			<form action="acquisto">
+
+				<label for="nomeParametro">Scegli la frutta:</label> <select
+					name="nomeParametro">
+
+					<%
+						for (String cc : lista) {
+					%>
+					<option value="<%=cc%>"><%=cc%></option>
+
+					<%
+						}
+					%>
+				</select> <br> <label for="limit">Inserisci quantità:</label> <input
+					type="number" id="limit" min="1" max="15" name="limit"><br>
+				<br> <input type="submit" value="Acquista">
+
 			</form>
 		</div>
 		<div id="Magazzino">

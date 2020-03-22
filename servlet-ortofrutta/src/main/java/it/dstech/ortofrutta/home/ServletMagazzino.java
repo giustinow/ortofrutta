@@ -25,12 +25,11 @@ public class ServletMagazzino extends HttpServlet {
 			e.printStackTrace();
 		}
 		req.getRequestDispatcher("magazzino.jsp").forward(req, resp);	
-		super.doGet(req, resp);
 	}
 
 	public static List<Magazzino> getMagazzino() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String password = "melascordosempredal1993";
+		String password = "pavillion";
 		String username = "root";
 		String url = "jdbc:mysql://localhost:3306/Ortofrutta?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false";
 		Connection connessione = DriverManager.getConnection(url, username, password);
@@ -39,12 +38,11 @@ public class ServletMagazzino extends HttpServlet {
 		List<Magazzino> elencoMagazzino = new ArrayList<>();
 		ResultSet risultatoQuery = statement.executeQuery();
 		while (risultatoQuery.next()) {
-			int id = risultatoQuery.getInt("id");
 			String nome = risultatoQuery.getString("nome");
 			int quantita = risultatoQuery.getInt("quantita");
 			double prezzo = risultatoQuery.getInt("prezzo");
 			String descrizione = risultatoQuery.getString("descrizione");
-			Magazzino magazzino = new Magazzino(id, nome, quantita, prezzo, descrizione);
+			Magazzino magazzino = new Magazzino(nome, quantita, prezzo, descrizione);
 			elencoMagazzino.add(magazzino);
 		}
 		connessione.close();
