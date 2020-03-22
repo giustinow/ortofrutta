@@ -6,7 +6,7 @@
 
 <servlet>
 	<servlet-name>home</servlet-name>
-	<servlet-class>it.dstech.gestioneortofrutta.Gestione</servlet-class>
+	<servlet-class>it.dstech.ortofrutta.home.Home</servlet-class>
 </servlet>
 
 <servlet-mapping>
@@ -18,12 +18,12 @@
 
 <servlet>
 	<servlet-name>vendite</servlet-name>
-	<servlet-class>it.dstech.gestioneortofrutta.Vendite</servlet-class>
+	<servlet-class>it.dstech.ortofrutta.home.ServletVendite</servlet-class>
 </servlet>
 
 <servlet-mapping>
 	<servlet-name>vendite</servlet-name>
-	<url-pattern>/home</url-pattern>
+	<url-pattern>/vendite</url-pattern>
 </servlet-mapping>
 
 
