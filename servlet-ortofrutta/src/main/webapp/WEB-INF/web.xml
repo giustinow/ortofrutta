@@ -27,6 +27,18 @@
 </servlet-mapping>
 
 
+<servlet>
+	<servlet-name>magazzino</servlet-name>
+	<servlet-class>it.dstech.ortofrutta.home.ServletMagazzino</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>magazzino</servlet-name>
+	<url-pattern>/magazzino</url-pattern>
+</servlet-mapping>
+
+
+
 
 
 </web-app>

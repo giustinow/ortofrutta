@@ -116,7 +116,7 @@ input.Vendite {
 		</div>
 		<div id="Magazzino">
 			<h4>Vedi il Magazzino</h4>
-			<form action="">
+			<form action="magazzino">
 				<input type="submit" name="magazzino" value="Magazzino"
 					class="Magazzino">
 			</form>
