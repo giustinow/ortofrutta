@@ -50,8 +50,15 @@
 		<url-pattern>/acquisto</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>aggiunta</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletAggiuntaProdotto</servlet-class>
+	</servlet>
 
-
+	<servlet-mapping>
+		<servlet-name>aggiunta</servlet-name>
+		<url-pattern>/aggiunta</url-pattern>
+	</servlet-mapping>
 
 
 </web-app>

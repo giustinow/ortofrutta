@@ -14,6 +14,11 @@ body {
 	line-height: 25px;
 }
 
+.aggiungi {
+	margin-top: 200px;
+	text-align: center;
+}
+
 li {
 	display: inline;
 }
@@ -56,7 +61,7 @@ h4.Acquista {
 	background-color: #ff7063;
 	text-align: left;
 	padding: 10px 90px 10px 250px;
-	margin: 0px 700px 0px -70px;
+	margin: 0px 750px 0px -70px;
 	height: 260px;
 }
 
@@ -73,7 +78,7 @@ input.Magazzino {
 }
 
 #Vendite {
-	background-color: #71de87;
+	background-color: #ff6363;
 	text-align: right;
 	padding: 10px 200px 10px 50px;
 	margin: -280px -10px 0px 700px;
@@ -95,42 +100,32 @@ input.Vendite {
 </head>
 
 <body>
-	<%
-		List<String> lista = (List<String>) request.getAttribute("magazzino");
-	%>
 	<div class="contenuto">
 		<div class="header">
 			<div class="titolo">
 				<h1>Ortofrutta.</h1>
 			</div>
-			<div class="navigazione">
-				<li><a href="">Home</a></li>
-				<li><a href="">About</a></li>
-				<li><a href="">Contact</a></li>
-				<li><a href="">More</a></li>
-			</div>
 		</div>
-		<div class=""></div>
+		<div class="aggiungi">
+			<h4>Aggiungi un prodotto al magazzino</h4>
+			<form action="aggiunta">
+				Nome: <input type="text" name="nome" /><br> <br>
+				Quantità: <input type="number" name="quantita" /><br> <br>
+				Prezzo: <input type="number" name="prezzo" /><br> <br>
+				Descrizione: <input type="text" name="descrizione" /> <input
+					type="submit" name="aggiunta" value="aggiunta" />
+			</form>
+		</div>
 		<div id="Acquista">
 			<h4 class="Acquista">Acquista un prodotto</h4>
-			
+
 			<form action="acquisto">
 
-				<label for="nomeParametro">Scegli la frutta:</label> <select
-					name="nomeParametro">
-
-					<%
-						for (String cc : lista) {
-					%>
-					<option value="<%=cc%>"><%=cc%></option>
-
-					<%
-						}
-					%>
-				</select> <br> <label for="limit">Inserisci quantità:</label> <input
-					type="number" id="limit" min="1" max="15" name="limit"><br>
-				<br> <input type="submit" value="Acquista">
-
+				<label for="nomeParametro">Scegli il prodotto:</label> <input
+					type="text" name="nomeParametro"> <br><br/> <label
+					for="limit">Inserisci quantità:</label> <input type="number"
+					id="limit" min="1" max="100" name="limit"> <br> <br>
+				<input type="submit" value="Acquista">
 			</form>
 		</div>
 		<div id="Magazzino">

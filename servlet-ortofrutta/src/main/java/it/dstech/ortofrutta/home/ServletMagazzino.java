@@ -15,11 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.dstech.ortofrutta.Magazzino;
+import it.dstech.ortofrutta.gestionedb.GestioneDB;
 
 public class ServletMagazzino extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		try {
+			GestioneDB gestioneDB = new GestioneDB();
 			req.setAttribute("magazzino", getMagazzino());
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
@@ -29,11 +31,11 @@ public class ServletMagazzino extends HttpServlet {
 
 	public static List<Magazzino> getMagazzino() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String password = "pavillion";
-		String username = "root";
-		String url = "jdbc:mysql://localhost:3306/Ortofrutta?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false";
+		String username = "NyyghtS5aZ";
+		String password = "TmAHe7mWCl";
+		String url = "jdbc:mysql://remotemysql.com:3306/NyyghtS5aZ?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false";
 		Connection connessione = DriverManager.getConnection(url, username, password);
-		PreparedStatement statement = connessione.prepareStatement("select * from Ortofrutta.Magazzino");
+		PreparedStatement statement = connessione.prepareStatement("select * from NyyghtS5aZ.Magazzino");
 
 		List<Magazzino> elencoMagazzino = new ArrayList<>();
 		ResultSet risultatoQuery = statement.executeQuery();
