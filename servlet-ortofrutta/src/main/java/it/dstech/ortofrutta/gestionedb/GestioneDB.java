@@ -75,19 +75,26 @@ public class GestioneDB {
 		connessione.close();
 		return elencoMagazzino;
 	}
-	public List<String> getProdottiMagazzino() throws ClassNotFoundException, SQLException {
-		PreparedStatement statement = connessione.prepareStatement("select * from NyyghtS5aZ.Magazzino");
-		List<String> elencoMagazzino = new ArrayList<>();
-		ResultSet risultatoQuery = statement.executeQuery();
-		while (risultatoQuery.next()) {
-			String nome = risultatoQuery.getString("nome");
-			int quantita = risultatoQuery.getInt("quantita");
-			double prezzo = risultatoQuery.getInt("prezzo");
-			String descrizione = risultatoQuery.getString("descrizione");
-			Magazzino magazzino = new Magazzino(nome, quantita, prezzo, descrizione);
-			elencoMagazzino.add(magazzino.getNome());
-		}
-		connessione.close();
-		return elencoMagazzino;
+	public boolean checkEsistenzaProdotto(String nome) throws SQLException {
+		PreparedStatement prepareStatement = connessione
+				.prepareStatement("select nome from NyyghtS5aZ.Magazzino where nome = ?");
+		prepareStatement.setString(1, nome);
+		ResultSet risultato = prepareStatement.executeQuery();
+		while (risultato.next()) {
+			if(nome.equals(risultato.getString("nome"))) {
+				return false;
+			}	
+		}return true;
+	}
+	public boolean checkQuantitaProdotto(int quantita, String nome) throws SQLException {
+		PreparedStatement prepareStatement = connessione
+				.prepareStatement("select quantita from NyyghtS5aZ.Magazzino where nome = ?");
+		prepareStatement.setString(1, nome);
+		ResultSet risultato = prepareStatement.executeQuery();
+		while (risultato.next()) {
+			if(quantita > risultato.getInt("quantita")) {
+				return false;
+			}	
+		}return true;
 	}
 }

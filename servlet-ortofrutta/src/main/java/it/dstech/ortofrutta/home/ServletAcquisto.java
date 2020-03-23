@@ -24,10 +24,14 @@ public class ServletAcquisto extends HttpServlet {
 		int quantita = Integer.parseInt(req.getParameter("limit"));	
 		try {
 		GestioneDB gestioneDB = new GestioneDB();
+		if(gestioneDB.checkQuantitaProdotto(quantita, nome)) {
 		gestioneDB.acquistaProdotto(nome, quantita);
+		req.getRequestDispatcher("home").forward(req, resp);
+		}else {
+			req.getRequestDispatcher("erroreAcquisto.jsp").forward(req, resp);
+		}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-		req.getRequestDispatcher("home").forward(req, resp);
 	} 
 }

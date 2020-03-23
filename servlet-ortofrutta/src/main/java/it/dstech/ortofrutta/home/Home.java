@@ -33,12 +33,12 @@ public class Home extends HttpServlet {
 	
 	private List<String> getMagazzino() throws SQLException, ClassNotFoundException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		String password = "pavillion";
-		String username = "root";
-		String url = "jdbc:mysql://localhost:3306/Ortofrutta?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false";
+		String username = "NyyghtS5aZ";
+		String password = "TmAHe7mWCl";
+		String url = "jdbc:mysql://remotemysql.com:3306/NyyghtS5aZ?useUnicode=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false";
 		Connection connessione = DriverManager.getConnection(url, username, password);
 		PreparedStatement statement = connessione
-				.prepareStatement("select nome from Ortofrutta.Magazzino");
+				.prepareStatement("select nome from NyyghtS5aZ.Magazzino");
 		ResultSet risultatoQuery = statement.executeQuery();
 		List<String> elenco = new ArrayList<>();
 		while (risultatoQuery.next()) {
