@@ -29,7 +29,7 @@ li {
 }
 
 .header {
-	background-color: #70de66;
+	background-color: #ff7063;
 	padding: 5px 0px 10px 80px;
 	margin: 0px 0px 0px -10px;
 	height: 100px;
@@ -58,7 +58,6 @@ h4.Acquista {
 }
 
 #Magazzino {
-	background-color: #ff7063;
 	text-align: left;
 	padding: 10px 90px 10px 250px;
 	margin: 0px 750px 0px -70px;
@@ -79,7 +78,6 @@ input.Magazzino {
 }
 
 #Vendite {
-	background-color: #ff6363;
 	text-align: right;
 	padding: 10px 200px 10px 50px;
 	margin: -280px -10px 0px 700px;

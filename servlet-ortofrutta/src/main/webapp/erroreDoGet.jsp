@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Aggiunta Prodotto</title>
+<title>Errore</title>
 </head>
 <style>
 body{
@@ -28,9 +28,11 @@ input.home {
 </style>
 
 <body>
-	<h1>Aggiunta riuscita!.</h1>
+	<h1>Eh... Volevi!</h1>
+	<h3>E che dire, sembra che da qui non puoi vedere la pagina.</h3>
 	<form action="home">
 		<input type="submit" value="Home" class="home">
+
 	</form>
 </body>
 </html>

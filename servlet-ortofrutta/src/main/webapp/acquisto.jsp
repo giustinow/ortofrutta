@@ -9,7 +9,26 @@
 <title>Acquisto.</title>
 </head>
 <style>
+body{
+	font-size: 150%;
+	font-family: Arial;
+	letter-spacing: 0.1em;
+	line-height: 25px;
+	text-align: center;
+}
+input.home {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin-right: 100px;
+}
 table, th, td {
+
 	border: 0.5px solid black;
 }
 </style>
@@ -35,7 +54,7 @@ table, th, td {
 
 	<h4>Acquisto Effettuato!</h4>
 	<form action="home">
-		<input type="submit" value="Torna Indietro">
+		<input type="submit" value="Torna Indietro" class="home">
 
 	</form>
 </body>
