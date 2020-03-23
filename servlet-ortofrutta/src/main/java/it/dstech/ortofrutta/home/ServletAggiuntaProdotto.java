@@ -16,6 +16,12 @@ public class ServletAggiuntaProdotto extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("messaggio", "hai provato a fare l'accesso all'acquisto di un prodotto dalla get");
+		req.getRequestDispatcher("home").forward(req, resp);
+
+	}
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nome = req.getParameter("nome");
 		int quantita = Integer.parseInt(req.getParameter("quantita"));
 		double prezzo = Double.parseDouble(req.getParameter("prezzo"));
@@ -28,7 +34,7 @@ public class ServletAggiuntaProdotto extends HttpServlet {
 			if (checkEsistenzaProdotto) {
 				gestioneDB.aggiungiProdottoVendite(vendite);
 				gestioneDB.aggiungiProdottoMagazzino(magazzino);
-				req.getRequestDispatcher("home").forward(req, resp);
+				req.getRequestDispatcher("aggiuntaProdottoRiuscito.jsp").forward(req, resp);
 			}else {
 				req.getRequestDispatcher("erroreAcquisto.jsp").forward(req, resp);
 			}

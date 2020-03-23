@@ -20,18 +20,24 @@ import it.dstech.ortofrutta.gestionedb.GestioneDB;
 public class ServletAcquisto extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nome = req.getParameter("nomeParametro");
-		int quantita = Integer.parseInt(req.getParameter("limit"));	
-		try {
-		GestioneDB gestioneDB = new GestioneDB();
-		if(gestioneDB.checkQuantitaProdotto(quantita, nome)) {
-		gestioneDB.acquistaProdotto(nome, quantita);
+		req.setAttribute("messaggio", "hai provato a fare l'accesso all'aggiunta di un prodotto dalla get");
 		req.getRequestDispatcher("home").forward(req, resp);
-		}else {
-			req.getRequestDispatcher("erroreAcquisto.jsp").forward(req, resp);
-		}
+	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String nome = req.getParameter("nomeParametro");
+		int quantita = Integer.parseInt(req.getParameter("limit"));
+		try {
+			GestioneDB gestioneDB = new GestioneDB();
+			if (gestioneDB.checkQuantitaProdotto(quantita, nome)) {
+				gestioneDB.acquistaProdotto(nome, quantita);
+				req.getRequestDispatcher("acquistoRiuscito.jsp").forward(req, resp);
+			} else {
+				req.getRequestDispatcher("erroreAcquisto.jsp").forward(req, resp);
+			}
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
-	} 
+	}
 }

@@ -98,8 +98,6 @@ input.Vendite, input.Aggiunta, input.Acquista {
 	font-size: 16px;
 	margin-right: 100px;
 }
-
-
 </style>
 </head>
 
@@ -113,21 +111,46 @@ input.Vendite, input.Aggiunta, input.Acquista {
 				<h1>Ortofrutta.</h1>
 			</div>
 		</div>
+		<%
+			String messaggio = (String) request.getAttribute("messaggio");
+			if (messaggio != null) {
+		%>
+		<h1>ERRORE</h1>
+		<%=messaggio%>
+
+		<%
+			} else {
+		%>
 		<div class="aggiungi">
 			<h4>Aggiungi un prodotto al magazzino</h4>
-			<form action="aggiunta">
+			<form action="aggiunta" method="post">
 				Nome: <input type="text" name="nome" /><br> <br>
-				Quantità: <input type="number" name="quantita" min="1"/><br> <br>
-				Prezzo: <input type="number" name="prezzo" min="0" /><br> <br>
-				Descrizione: <input type="text" name="descrizione" /> <br><br><input
-					type="submit" name="aggiunta" value="Aggiungi" class="Aggiunta" />
+				Quantità: <input type="number" name="quantita" min="1" /><br>
+				<br> Prezzo: <input type="number" name="prezzo" min="0" /><br>
+				<br> Descrizione: <input type="text" name="descrizione" /> <br>
+				<br> <input type="submit" name="aggiunta" value="Aggiungi"
+					class="Aggiunta" />
 			</form>
+
 		</div>
+		<%
+			}
+		%>
+		<%
+			String messaggio1 = (String) request.getAttribute("messaggio");
+			if (messaggio1 != null) {
+		%>
+		<h1>ERRORE</h1>
+		<%=messaggio1%>
+
+		<%
+			} else {
+		%>
 		<div id="Acquista">
 			<h4 class="Acquista">Acquista un prodotto</h4>
 
 
-			<form action="acquisto">
+			<form action="acquisto" method="post">
 
 				<label for="nomeParametro">Scegli la frutta:</label> <select
 					name="nomeParametro">
@@ -139,12 +162,15 @@ input.Vendite, input.Aggiunta, input.Acquista {
 					<%
 						}
 					%>
-				</select><br /> <br><label for="limit">Inserisci quantità:</label> <input
+				</select><br /> <br> <label for="limit">Inserisci quantità:</label> <input
 					type="number" id="limit" min="1" name="limit"> <br> <br>
 				<input type="submit" value="Acquista" class="Acquista">
 			</form>
-		</div>
 
+		</div>
+		<%
+			}
+		%>
 
 		<div id="Magazzino">
 			<h4>Vedi il Magazzino</h4>
