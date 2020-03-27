@@ -8,6 +8,7 @@
 </head>
 <style>
 body {
+background-color: #f2fff3;
 	font-size: 150%;
 	font-family: Arial;
 	letter-spacing: 0.1em;
@@ -63,7 +64,7 @@ margin-top: 200px;
 		<div class="navigazione">
 			<ul>
 				<li><a href="http://localhost:8080/servlet-ortofrutta/home?">Home</a></li>
-				<li><a href="">About</a></li>
+				<li><a href="http://localhost:8080/servlet-ortofrutta/about.jsp">About</a></li>
 				<li><a href="">Contact</a></li>
 				<li><a href="">More</a></li>
 			</ul>

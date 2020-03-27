@@ -9,6 +9,7 @@
 <title>Gestione Ortofrutta</title>
 <style type="text/css">
 body {
+background-color: #f2fff3;
 	font-size: 150%;
 	font-family: Arial;
 	letter-spacing: 0.1em;
@@ -104,7 +105,8 @@ input.Vendite, input.Aggiunta, input.Acquista {
 
 .registrazione {
 	text-align: center;
-	margin: -250px -900px 0px 0px;
+	margin: -250px 0px 0px 0px;
+	padding: 0px 0px 0px 700px;
 }
 
 .accedi {
@@ -124,7 +126,7 @@ input.Vendite, input.Aggiunta, input.Acquista {
 			<div class="navigazione">
 				<ul>
 					<li><a href="http://localhost:8080/servlet-ortofrutta/home?">Home</a></li>
-					<li><a href="">About</a></li>
+					<li><a href="http://localhost:8080/servlet-ortofrutta/about.jsp">About</a></li>
 					<li><a href="">Contact</a></li>
 					<li><a href="">More</a></li>
 				</ul>

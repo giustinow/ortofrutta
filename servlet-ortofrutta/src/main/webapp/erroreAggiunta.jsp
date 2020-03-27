@@ -8,6 +8,7 @@
 </head>
 <style>
 body{
+background-color: #f2fff3;
 	font-size: 150%;
 	font-family: Arial;
 	letter-spacing: 0.1em;

@@ -8,6 +8,7 @@
 </head>
 <style>
 body{
+background-color: #f2fff3;
 	font-size: 150%;
 	font-family: Arial;
 	letter-spacing: 0.1em;
@@ -72,7 +73,7 @@ margin-top: 200px;
 		<h3>E che dire, in questo periodo di Covid-19 non trovi cosi
 			tanti prodotti.</h3>
 		<form action="home">
-			<a href="http://localhost:8080/servlet-ortofrutta/home?"></a> <input
+			<a href="http://localhost:8080/servlet-ortofrutta/home?"></a><br> <br> <input
 				type="submit" value="Home" class="home">
 		</form>
 	</div>
