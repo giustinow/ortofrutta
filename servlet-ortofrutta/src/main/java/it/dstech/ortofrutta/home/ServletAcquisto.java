@@ -2,37 +2,46 @@ package it.dstech.ortofrutta.home;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.dstech.ortofrutta.Scontrino;
 import it.dstech.ortofrutta.gestionedb.GestioneDB;
 
 public class ServletAcquisto extends HttpServlet {
+//	@Override
+//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		req.setAttribute("messaggio", "hai provato a fare l'accesso all'aggiunta di un prodotto dalla get");
+//		req.getRequestDispatcher("erroreDoGet.jsp").forward(req, resp);
+//	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("messaggio", "hai provato a fare l'accesso all'aggiunta di un prodotto dalla get");
-		req.getRequestDispatcher("erroreDoGet.jsp").forward(req, resp);
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nome = req.getParameter("nomeParametro");
-		int quantita = Integer.parseInt(req.getParameter("limit"));
+		double totale = Double.parseDouble(req.getParameter("totale"));
+		String username = req.getParameter("username");
+		Scontrino scontrino = new Scontrino(currentDate(), 0, totale, username);
 		try {
 			GestioneDB gestioneDB = new GestioneDB();
-			if (gestioneDB.checkQuantitaProdotto(quantita, nome)) {
-				gestioneDB.acquistaProdotto(nome, quantita);
-				req.getRequestDispatcher("acquistoRiuscito.jsp").forward(req, resp);
-			} else {
-				req.getRequestDispatcher("erroreAcquisto.jsp").forward(req, resp);
-			}
+			gestioneDB.nuovoScontrino(scontrino);
+			gestioneDB.updateIdProdottoScontrino(username);
+			gestioneDB.updateIdScontrinoCarrello(gestioneDB.idScontrino());
+			req.setAttribute("idScontrino", gestioneDB.idScontrino());
+			req.setAttribute("scontrino", scontrino);
+			req.setAttribute("username", username);
+			req.getRequestDispatcher("acquistoRiuscito.jsp").forward(req, resp);
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public static String currentDate() {
+		Date todaysDate = new Date();
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+		return df.format(todaysDate);
 	}
 }

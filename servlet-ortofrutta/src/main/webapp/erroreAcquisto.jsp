@@ -25,13 +25,56 @@ input.home {
 	font-size: 16px;
 	margin-right: 100px;
 }
+.navigazione {
+	margin: -45px 50px 50px 800px;
+	word-spacing: 20px;
+	text-align: left;
+}
+
+li {
+	display: inline;
+}
+
+.titolo {
+	text-align: left;
+}
+.contenuto{
+margin-top: 200px;
+}
+.header {
+	background-color: #ff7063;
+	padding: 5px 0px 10px 80px;
+	margin: 0px 0px 0px -10px;
+	height: 100px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 50;
+}
 </style>
 
 <body>
-	<h1>Errore.</h1>
-	<h3>E che dire, in questo periodo di Covid-19 non trovi cosi tanti prodotti.</h3>
-	<form action="home">
-		<input type="submit" value="Home" class="home">
-	</form>
+<div class="header">
+		<div class="titolo">
+			<h1>Ortofrutta.</h1>
+		</div>
+		<div class="navigazione">
+			<ul>
+				<li><a href="http://localhost:8080/servlet-ortofrutta/home?">Home</a></li>
+				<li><a href="">About</a></li>
+				<li><a href="">Contact</a></li>
+				<li><a href="">More</a></li>
+			</ul>
+		</div>
+	</div>
+	<div>
+		<h1>Errore.</h1>
+		<h3>E che dire, in questo periodo di Covid-19 non trovi cosi
+			tanti prodotti.</h3>
+		<form action="home">
+			<a href="http://localhost:8080/servlet-ortofrutta/home?"></a> <input
+				type="submit" value="Home" class="home">
+		</form>
+	</div>
 </body>
 </html>

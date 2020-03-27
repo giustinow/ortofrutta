@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@page import="it.dstech.ortofrutta.Magazzino"%>
@@ -15,8 +16,11 @@ body {
 }
 
 .aggiungi {
-	margin-top: 200px;
+	padding: 20px 80px 50px 80px;
+	margin: 100px -20px 100px -20px;
 	text-align: center;
+	background-color: #ffb963;
+	padding
 }
 
 li {
@@ -48,6 +52,7 @@ h3 {
 h4.Acquista {
 	margin-top: -40px;
 }
+
 
 #Acquista {
 	background-color: #ffb963;
@@ -96,17 +101,33 @@ input.Vendite, input.Aggiunta, input.Acquista {
 	font-size: 16px;
 	margin-right: 100px;
 }
+
+.registrazione {
+	text-align: center;
+	margin: -250px -900px 0px 0px;
+}
+
+.accedi {
+	text-align: left;
+	margin: 250px 0px 100px 100px;
+
+}
 </style>
 </head>
 
 <body>
-	<%
-		List<String> lista = (List<String>) request.getAttribute("magazzino");
-	%>
 	<div class="contenuto">
 		<div class="header">
 			<div class="titolo">
 				<h1>Ortofrutta.</h1>
+			</div>
+			<div class="navigazione">
+				<ul>
+					<li><a href="http://localhost:8080/servlet-ortofrutta/home?">Home</a></li>
+					<li><a href="">About</a></li>
+					<li><a href="">Contact</a></li>
+					<li><a href="">More</a></li>
+				</ul>
 			</div>
 		</div>
 		<%
@@ -119,6 +140,23 @@ input.Vendite, input.Aggiunta, input.Acquista {
 		<%
 			} else {
 		%>
+		<div class="accedi">
+			<form action="accesso" class="accedi">
+				<h4>Accedi al tuo account</h4>
+				Username: <input type="text" name="username" /> <br> <br><input
+					type="submit" name="accedi" value="Accedi" class="Magazzino" />
+			</form>
+		</div>
+
+		<div class="registrazione">
+			<h4 class="">Registrati!</h4>
+			<form action="registrazione">
+				Username: <input type="text" name="username" /><br> <br>
+				Età: <input type="number" name="eta" min="18" max="120" /> <br><br> <input
+					type="submit" name="registrati" value="Registrati"
+					class="Magazzino" />
+			</form>
+		</div>
 		<div class="aggiungi">
 			<h4>Aggiungi un prodotto al magazzino</h4>
 			<form action="aggiunta" method="post">
@@ -144,28 +182,7 @@ input.Vendite, input.Aggiunta, input.Acquista {
 		<%
 			} else {
 		%>
-		<div id="Acquista">
-			<h4 class="Acquista">Acquista un prodotto</h4>
 
-
-			<form action="acquisto" method="post">
-
-				<label for="nomeParametro">Scegli la frutta:</label> <select
-					name="nomeParametro">
-
-					<%
-						for (String cc : lista) {
-					%>
-					<option value="<%=cc%>"><%=cc%></option>
-					<%
-						}
-					%>
-				</select><br /> <br> <label for="limit">Inserisci quantità:</label> <input
-					type="number" id="limit" min="1" name="limit"> <br> <br>
-				<input type="submit" value="Acquista" class="Acquista">
-			</form>
-
-		</div>
 		<%
 			}
 		%>

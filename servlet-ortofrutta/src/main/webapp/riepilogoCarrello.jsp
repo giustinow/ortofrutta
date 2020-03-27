@@ -1,24 +1,18 @@
-<%@page import="it.dstech.ortofrutta.Scontrino"%>
+<%@page import="it.dstech.ortofrutta.Carrello"%>
+<%@page import="java.util.List"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Acquisto Riuscito</title>
-</head>
+<title>Carrello.</title>
 <style>
 body {
 	font-size: 150%;
 	font-family: Arial;
 	letter-spacing: 0.1em;
 	line-height: 25px;
-	text-align: center;
-}
-
-.contenuto {
-	margin-top: 180px;
-	
 }
 
 input.home {
@@ -26,12 +20,33 @@ input.home {
 	border: none;
 	color: white;
 	padding: 10px 20px;
-	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	margin-right: 100px;
+	margin-right: 50px;
 }
+
+table.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+table, th, td {
+	border: 0.5px solid black;
+	margin-top: 180px;
+}
+
+.header {
+	background-color: #ff7063;
+	padding: 5px 0px 10px 80px;
+	margin: 0px 0px 0px -10px;
+	height: 100px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 50;
+}
+
 .navigazione {
 	margin: -45px 50px 50px 800px;
 	word-spacing: 20px;
@@ -45,6 +60,11 @@ li {
 .titolo {
 	text-align: left;
 }
+
+.contenuto {
+	margin-top: 200px;
+}
+
 .header {
 	background-color: #ff7063;
 	padding: 5px 0px 10px 80px;
@@ -56,6 +76,7 @@ li {
 	z-index: 50;
 }
 </style>
+</head>
 
 <body>
 	<div class="header">
@@ -72,37 +93,43 @@ li {
 		</div>
 	</div>
 	<%
-		Scontrino scontrino = (Scontrino) request.getAttribute("scontrino");
-		int idScontrino = (int) request.getAttribute("idScontrino");
+		List<Carrello> elencoCarrello = (List<Carrello>) request.getAttribute("carrello");
+		Double totale = (Double) request.getAttribute("totale");
 		String username = (String) request.getAttribute("username");
 	%>
 	<div class="contenuto">
-		<h1>Acquisto Riuscito.</h1>
-		<br>
+		<div class="header">
+			<div class="titolo">
+				<h1>Ortofrutta.</h1>
+			</div>
+		</div>
 		<table class="centro">
 			<tr>
-				<th>Fattura N.</th>
-				<th>Data</th>
-				<th>Prezzo Totale</th>
-				<th>Username</th>
+				<th>Nome Prodotto</th>
+				<th>Quantita</th>
+				<th>Prezzo</th>
+				<th>Totale</th>
 			</tr>
+			<%
+				for (Carrello lista : elencoCarrello) {
+			%>
 			<tr>
-				<td><%=idScontrino%></td>
-				<td><%=scontrino.getData()%></td>
-				<td><%=scontrino.getTotale()%></td>
-				<td><%=scontrino.getUsername()%></td>
+				<td><%=lista.getNome()%></td>
+				<td><%=lista.getQuantita()%></td>
+				<td><%=lista.getPrezzo()%></td>
+				<td><%=lista.getTotale()%></td>
 			</tr>
+			<%
+				}
+			%>
 		</table>
-		<h4>Torna alla Home</h4>
-		<form action="home">
-			<input type="submit" value="Home" class="home">
-		</form>
-		<br>
-		<h4>Profilo</h4>
-		<form action="accesso">
-			<input type="hidden" id="username" name="username"
-				value=<%=username%>> <input type="submit" value="Profilo"
-				class="home">
+		<h4>Totale da pagare:</h4>
+		<%=totale%>
+		<br> <br>
+		<form action="acquisto">
+			<input type="hidden" name="username" value=<%=username%>> <input
+				type="hidden" name="totale" value=<%=totale%>> <input
+				type="submit" value="Conferma" class="home">
 		</form>
 	</div>
 </body>

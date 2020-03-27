@@ -39,7 +39,7 @@
 
 
 
-      
+
 	<servlet>
 		<servlet-name>acquisto</servlet-name>
 		<servlet-class>it.dstech.ortofrutta.home.ServletAcquisto</servlet-class>
@@ -60,5 +60,82 @@
 		<url-pattern>/aggiunta</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>registrazione</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletRegistrazioneUtente</servlet-class>
+	</servlet>
 
+	<servlet-mapping>
+		<servlet-name>registrazione</servlet-name>
+		<url-pattern>/registrazione</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>accesso</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletAccessoUtente</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>accesso</servlet-name>
+		<url-pattern>/accesso</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>compra</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletSchermataAggiungiAlCarrello</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>compra</servlet-name>
+		<url-pattern>/compra</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>continua-Shopping</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletContinuaAcquisto</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>continua-Shopping</servlet-name>
+		<url-pattern>/continua-shopping</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>riepilogo</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletRiepilogoCarrello</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>riepilogo</servlet-name>
+		<url-pattern>/riepilogo</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>storico-acquisti</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletStoricoAcquisti</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>storico-acquisti</servlet-name>
+		<url-pattern>/storico-acquisti</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+		<servlet-name>storico-carrello</servlet-name>
+		<servlet-class>it.dstech.ortofrutta.home.ServletStoricoCarrello</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>storico-carrello</servlet-name>
+		<url-pattern>/storico-carrello</url-pattern>
+	</servlet-mapping>
+
+
+
+	<welcome-file-list>
+		<welcome-file>/home.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>

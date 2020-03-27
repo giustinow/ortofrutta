@@ -4,16 +4,17 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Aggiunta Prodotto</title>
+<title>Errore Registrazione</title>
 </head>
 <style>
-body{
+body {
 	font-size: 150%;
 	font-family: Arial;
 	letter-spacing: 0.1em;
 	line-height: 25px;
 	text-align: center;
 }
+
 input.home {
 	background-color: #4CAF50; /* Green */
 	border: none;
@@ -23,19 +24,10 @@ input.home {
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	margin-right: 100px;
+	margin-right: 0px;
 }
-.header {
-	background-color: #ff7063;
-	padding: 5px 0px 10px 80px;
-	margin: 0px 0px 0px -10px;
-	height: 100px;
-	position: fixed;
-	top: 0px;
-	width: 100%;
-	z-index: 50;
-	}
-	.navigazione {
+
+.navigazione {
 	margin: -45px 50px 50px 800px;
 	word-spacing: 20px;
 	text-align: left;
@@ -64,7 +56,7 @@ margin-top: 200px;
 </style>
 
 <body>
-<div class="header">
+	<div class="header">
 		<div class="titolo">
 			<h1>Ortofrutta.</h1>
 		</div>
@@ -78,10 +70,12 @@ margin-top: 200px;
 		</div>
 	</div>
 	<div class="contenuto">
-	<h1>Aggiunta riuscita!.</h1>
-	<form action="home">
-		<input type="submit" value="Home" class="home">
-	</form>
+		<h1>Errore.</h1>
+		<h3>Questo utente non è ancora registrato</h3>
+		<form action="home">
+			<input type="submit" value="Home" class="home">
+
+		</form>
 	</div>
 </body>
 </html>
