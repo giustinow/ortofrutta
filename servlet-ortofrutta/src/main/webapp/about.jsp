@@ -61,20 +61,22 @@ margin-top: 200px;
 	width: 100%;
 	z-index: 50;
 }
+a.home {
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin-right: 50px;
+}
 </style>
 
 <body>
 <div class="header">
 		<div class="titolo">
 			<h1>Ortofrutta.</h1>
-		</div>
-		<div class="navigazione">
-			<ul>
-				<li><a href="http://localhost:8080/servlet-ortofrutta/home?">Home</a></li>
-				<li><a href="http://localhost:8080/servlet-ortofrutta/about.jsp">About</a></li>
-				<li><a href="">Contact</a></li>
-				<li><a href="">More</a></li>
-			</ul>
 		</div>
 	</div>
 	<div class="contenuto">
@@ -85,9 +87,9 @@ margin-top: 200px;
 	<p>Guillermo: il commesso</p>
 	<p>Daniele: il muratore (extra)</p>
 	<br> <br>
-	<form action="home">
-		<input type="submit" value="Home" class="home">
-	</form>
+		<div>
+			<a href="javascript:history.back()" class="home">Torna Indietro</a>
+		</div>
 	</div>
 </body>
 </html>

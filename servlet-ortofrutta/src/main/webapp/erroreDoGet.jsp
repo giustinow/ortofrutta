@@ -25,14 +25,19 @@ input.home {
 	font-size: 16px;
 	margin-right: 100px;
 }
+.contenuto{
+margin-top: 200px;
+}
 </style>
 
 <body>
-	<h1>Eh... Volevi!</h1>
-	<h3>E che dire, sembra che da qui non puoi vedere la pagina.</h3>
-	<form action="home">
-		<input type="submit" value="Home" class="home">
+	<div class="contenuto">
+		<h1>Eh... Volevi!</h1>
+		<h3>E che dire, sembra che da qui non puoi vedere la pagina.</h3>
+		<form action="home">
+			<input type="submit" value="Home" class="home">
 
-	</form>
+		</form>
+	</div>
 </body>
 </html>

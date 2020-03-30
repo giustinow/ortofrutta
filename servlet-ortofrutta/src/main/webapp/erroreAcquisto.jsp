@@ -52,6 +52,9 @@ margin-top: 200px;
 	width: 100%;
 	z-index: 50;
 }
+.contenuto{
+margin-top: 200px;
+}
 </style>
 
 <body>
@@ -68,7 +71,7 @@ margin-top: 200px;
 			</ul>
 		</div>
 	</div>
-	<div>
+	<div class="contenuto">
 		<h1>Errore.</h1>
 		<h3>E che dire, in questo periodo di Covid-19 non trovi cosi
 			tanti prodotti.</h3>

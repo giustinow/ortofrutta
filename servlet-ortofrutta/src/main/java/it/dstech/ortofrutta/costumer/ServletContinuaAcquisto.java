@@ -1,4 +1,4 @@
-package it.dstech.ortofrutta.home;
+package it.dstech.ortofrutta.costumer;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -31,6 +31,7 @@ public class ServletContinuaAcquisto extends HttpServlet {
 			} else {
 				req.getRequestDispatcher("erroreAcquisto.jsp").forward(req, resp);
 			}
+			gestioneDB.closeConnection();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

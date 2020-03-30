@@ -1,4 +1,4 @@
-package it.dstech.ortofrutta.home;
+package it.dstech.ortofrutta.costumer;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -26,6 +26,7 @@ public class ServletSchermataAggiungiAlCarrello extends HttpServlet {
 				List<String> lista = gestioneDB.getListaMagazzino();
 				req.setAttribute("magazzino", lista);
 				req.setAttribute("username", username);
+				gestioneDB.closeConnection();
 			} catch (ClassNotFoundException | SQLException e) {
 				e.printStackTrace();
 			}

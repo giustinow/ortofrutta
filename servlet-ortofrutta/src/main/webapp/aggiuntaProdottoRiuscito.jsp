@@ -80,7 +80,7 @@ margin-top: 200px;
 	</div>
 	<div class="contenuto">
 	<h1>Aggiunta riuscita!.</h1>
-	<form action="home">
+	<form action="admin.jsp">
 		<input type="submit" value="Home" class="home">
 	</form>
 	</div>

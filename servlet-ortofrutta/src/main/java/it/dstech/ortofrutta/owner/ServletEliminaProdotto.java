@@ -1,4 +1,4 @@
-package it.dstech.ortofrutta.home;
+package it.dstech.ortofrutta.owner;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -10,20 +10,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.dstech.ortofrutta.gestionedb.GestioneDB;
 
-public class ServletAccessoUtente extends HttpServlet{
+public class ServletEliminaProdotto extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String username = req.getParameter("username");
+		String nome = req.getParameter("nome");
 		try {
-			GestioneDB gestioneDB = new GestioneDB();
-			if(!gestioneDB.checkEsistenzaUtente(username)) {
-				req.setAttribute("username", username);
-				req.getRequestDispatcher("profiloUtente.jsp").forward(req, resp);
-			}else {
-				req.getRequestDispatcher("utenteNonEsistente.jsp").forward(req, resp);
-			}
+			GestioneDB gestione = new GestioneDB();
+			gestione.deleteProdotto(nome);
+			gestione.deleteProdottoVendite(nome);
+			gestione.closeConnection();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
-		}
+		}req.getRequestDispatcher("magazzino").forward(req, resp);
 	}
 }

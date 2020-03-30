@@ -17,7 +17,7 @@ background-color: #f2fff3;
 	line-height: 25px;
 }
 
-input.home {
+a.home {
 	background-color: #4CAF50; /* Green */
 	border: none;
 	color: white;
@@ -135,11 +135,8 @@ li {
 		</table>
 		<br> <br>
 		<div>
-			<a href="javascript:history.back()">Torna Indietro</a>
+			<a href="javascript:history.back()" class="home">Torna Indietro</a>
 		</div>
-		<form action="home">
-			<input type="submit" value="Home" class="home">
-		</form>
 	</div>
 </body>
 </html>

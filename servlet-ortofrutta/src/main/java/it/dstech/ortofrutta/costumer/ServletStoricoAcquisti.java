@@ -1,4 +1,4 @@
-package it.dstech.ortofrutta.home;
+package it.dstech.ortofrutta.costumer;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,8 +22,10 @@ public class ServletStoricoAcquisti extends HttpServlet {
 			GestioneDB gestioneDB = new GestioneDB();
 			List<ScontrinoRetrieve> stampaScontriniUtente = gestioneDB.stampaScontriniUtente(username);
 			List<Integer>stampaIdScontrino = gestioneDB.stampaIdScontrino(username);
+			req.setAttribute("username", username);
 			req.setAttribute("scontrini", stampaScontriniUtente);
 			req.setAttribute("idScontrini", stampaIdScontrino);
+			gestioneDB.closeConnection();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

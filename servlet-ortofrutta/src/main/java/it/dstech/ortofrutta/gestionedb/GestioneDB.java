@@ -32,6 +32,9 @@ public class GestioneDB {
 		this.connessione = DriverManager.getConnection(url, username, password);
 		this.statement = connessione.createStatement();
 	}
+	public void closeConnection() throws SQLException {
+		this.connessione.close();
+	}
 
 	public void aggiungiProdottoMagazzino(Magazzino magazzino) throws SQLException {
 		String queryInserimento = "INSERT INTO Ortofrutta.Magazzino (`nome`, `quantita`, `prezzo`, `descrizione`) VALUES (?, ?, ?, ?)";
@@ -138,6 +141,17 @@ public class GestioneDB {
 		return true;
 	}
 
+	public boolean checkCredenzialiProprietario(String username) throws SQLException {
+		PreparedStatement prepareStatement = connessione.prepareStatement("select username from Ortofrutta.Utente");
+		ResultSet risultato = prepareStatement.executeQuery();
+		while (risultato.next()) {
+			if (username.equals("admin")) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public void aggiungiAlCarrello(String nome, int quantita, double prezzo, double totale, int idScontrino)
 			throws SQLException {
 		String queryInserimento = "INSERT INTO Ortofrutta.Carrello (`nome`, `quantita`, `prezzo`,`totale` , `idScontrino`) VALUES (?, ?, ?, ?, ?)";
@@ -185,6 +199,37 @@ public class GestioneDB {
 		return idScontrino;
 	}
 
+	public List<Utente> stampaListaUtenti() throws SQLException {
+		PreparedStatement statement = connessione
+				.prepareStatement("select username, eta from Ortofrutta.Utente");
+		ResultSet risultatoQuery = statement.executeQuery();
+		List<Utente> elencoUtenti = new ArrayList<>();
+		while (risultatoQuery.next()) {
+			String username = risultatoQuery.getString("username");
+			int eta = risultatoQuery.getInt("eta");
+			Utente utente = new Utente(username, eta, 0);
+			elencoUtenti.add(utente);
+		}
+		return elencoUtenti;
+	}
+	public void deleteProdotto(String nome) throws SQLException {
+		String query = "delete from Ortofrutta.Magazzino where nome = ?";
+	      PreparedStatement preparedStatement = connessione.prepareStatement(query);
+	      preparedStatement.setString(1, nome);
+	      preparedStatement.execute();
+	}
+	public void deleteProdottoVendite(String nome) throws SQLException {
+		String query = "delete from Ortofrutta.Vendite where nome = ?";
+	      PreparedStatement preparedStatement = connessione.prepareStatement(query);
+	      preparedStatement.setString(1, nome);
+	      preparedStatement.execute();
+	}
+	public void deleteUtente(String username) throws SQLException {
+		String query = "delete from Ortofrutta.Utente where username = ?";
+	      PreparedStatement preparedStatement = connessione.prepareStatement(query);
+	      preparedStatement.setString(1, username);
+	      preparedStatement.execute();
+	}
 	public double prezzoProdotto(String nome) throws SQLException {
 		PreparedStatement prepareStatement = connessione
 				.prepareStatement("select prezzo from Ortofrutta.Magazzino where nome = ?");
@@ -253,6 +298,7 @@ public class GestioneDB {
 		statementVendite.setString(2, username);
 		statementVendite.execute();
 	}
+
 	public void updateIdScontrinoCarrello(int idScontrino) throws SQLException {
 		String queryUpdateVendite = "UPDATE `Ortofrutta`.`Carrello` SET Carrello.idScontrino = ? WHERE idScontrino = 0;";
 		PreparedStatement statementVendite = connessione.prepareStatement(queryUpdateVendite);
@@ -277,7 +323,15 @@ public class GestioneDB {
 		}
 		return elencoCarrello;
 	}
-
+	public void updateProdotto(String nomeProdotto, int quantita, double prezzo, String descrizione) throws SQLException {
+		String queryUpdateVendite = "UPDATE `Ortofrutta`.`Magazzino` SET `quantita` = ?, `prezzo` = ?, `descrizione` = ? WHERE (`nome` = ?)";
+		PreparedStatement statementVendite = connessione.prepareStatement(queryUpdateVendite);
+		statementVendite.setInt(1, quantita);
+		statementVendite.setDouble(2, prezzo);
+		statementVendite.setString(3, descrizione);
+		statementVendite.setString(4, nomeProdotto);
+		statementVendite.execute();
+	}
 	public List<Integer> stampaIdScontrino(String username) throws SQLException {
 		PreparedStatement statement = connessione
 				.prepareStatement("select idScontrino from Ortofrutta.Scontrino where username = ?");
@@ -291,7 +345,6 @@ public class GestioneDB {
 		return elencoCarrello;
 	}
 
-	
 	public List<Carrello> stampaStoricoProdotti(int idScontrino) throws SQLException {
 		PreparedStatement statement = connessione
 				.prepareStatement("select * from Ortofrutta.Carrello where idScontrino = ?");

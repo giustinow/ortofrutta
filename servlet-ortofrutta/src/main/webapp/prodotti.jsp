@@ -1,4 +1,4 @@
-<%@page import="it.dstech.ortofrutta.Vendite"%>
+<%@page import="it.dstech.ortofrutta.Magazzino"%>
 <%@page import="java.util.List"%>
 <%@page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -6,27 +6,13 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Prodotti.</title>
 </head>
 <style>
 body {
-background-color: #f2fff3;
+	background-color: #f2fff3;
 	font-size: 150%;
 	font-family: Arial;
-	letter-spacing: 0.1em;
-	line-height: 25px;
-}
-li {
-	display: inline;
-		font-family: Arial;
-	letter-spacing: 0.1em;
-	line-height: 25px;
-}
-
-.navigazione {
-	margin: -45px 50px 50px 800px;
-	word-spacing: 20px;
-		font-family: Arial;
 	letter-spacing: 0.1em;
 	line-height: 25px;
 }
@@ -40,22 +26,39 @@ input.home {
 	display: inline-block;
 	font-size: 16px;
 	margin-right: 50px;
-	margin-top: 20px;
 }
 
 table, th, td {
 	margin-top: 180px;
+	margin-left: 50px;
 }
+
+li {
+	display: inline;
+	font-family: Arial;
+	letter-spacing: 0.1em;
+	line-height: 25px;
+}
+
+.navigazione {
+	margin: -45px 50px 50px 800px;
+	word-spacing: 20px;
+	font-family: Arial;
+	letter-spacing: 0.1em;
+	line-height: 25px;
+}
+
 .header {
 	background-color: #4CAF50;
 	padding: 5px 0px 10px 80px;
-	margin: 0px 0px 20px -10px;
+	margin: 0px 0px 0px -10px;
 	height: 100px;
 	position: fixed;
 	top: 0px;
 	width: 100%;
 	z-index: 50;
 }
+
 table {
 	border-spacing: 0px;
 }
@@ -106,6 +109,15 @@ td {
 tr.even td, tr.even th {
 	background-color: #e8eff5;
 }
+.link{
+color: black;
+}
+a:visited {
+  background-color: none;
+}
+a:active {
+  text-decoration: none;
+}
 </style>
 
 <body>
@@ -115,35 +127,41 @@ tr.even td, tr.even th {
 			</div>
 			<div class="navigazione">
 				<ul>
-					<li><a href="http://localhost:8080/servlet-ortofrutta/admin.jsp">Home</a></li>
-					<li><a href="http://localhost:8080/servlet-ortofrutta/magazzino?magazzino=Magazzino">Magazzino</a></li>
-					<li><a href="http://localhost:8080/servlet-ortofrutta/vendite?">Vendite</a></li>
-					<li><a href="http://localhost:8080/servlet-ortofrutta/about.jsp">About</a></li>
+					<li><a href="http://localhost:8080/servlet-ortofrutta/">Home</a></li>
+					<li><a
+						href="http://localhost:8080/servlet-ortofrutta/prodotti?">Prodotti</a></li>
+					<li><a
+						href="http://localhost:8080/servlet-ortofrutta/about.jsp" class="link">About</a></li>
 				</ul>
 			</div>
 		</div>
-	<%
-		List<Vendite> elencoVendite = (List<Vendite>) request.getAttribute("vendite");
-	%>
-	<table style="text-align: center;">
-		<tr class="head">
-			<th>Nome</th>
-			<th>Quantita</th>
-		</tr>
 		<%
-			for (Vendite lista : elencoVendite) {
+			List<Magazzino> elencoMagazzino = (List<Magazzino>) request.getAttribute("magazzino");
 		%>
-		<tr>
-			<td><%=lista.getNome()%></td>
-			<td><%=lista.getQuantita()%></td>
-		</tr>
-		<%
-			}
-		%>
-	</table>
-	<form action="admin.jsp">
-		<input type="submit" value="Home" class="home">
+		<table class="centro">
+			<tr class="head">
+				<th>Nome</th>
+				<th>Quantita</th>
+				<th>Prezzo</th>
+				<th>Descrizione</th>
+			</tr>
+			<%
+				for (Magazzino lista : elencoMagazzino) {
+			%>
+			<tr>
+				<td><%=lista.getNome()%></td>
+				<td><%=lista.getQuantita()%></td>
+				<td><%=lista.getPrezzo()%></td>
+				<td><%=lista.getDescrizione()%></td>
+			</tr>
+			<%
+				}
+			%>
+		</table>
+		<br> <br>
+		<form action="home">
+			<input type="submit" value="Home" class="home">
 
-	</form>
+		</form>
 </body>
 </html>

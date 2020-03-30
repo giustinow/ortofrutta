@@ -1,4 +1,4 @@
-package it.dstech.ortofrutta.home;
+package it.dstech.ortofrutta.costumer;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -21,6 +21,7 @@ public class ServletStoricoCarrello extends HttpServlet{
 			List<Carrello> stampaStoricoProdotti = gestioneDB.stampaStoricoProdotti(id);
 			req.setAttribute("carrello", stampaStoricoProdotti);
 			req.setAttribute("idScontrino", id);
+			gestioneDB.closeConnection();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

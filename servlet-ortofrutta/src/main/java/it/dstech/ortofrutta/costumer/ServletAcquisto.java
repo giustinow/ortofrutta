@@ -1,4 +1,4 @@
-package it.dstech.ortofrutta.home;
+package it.dstech.ortofrutta.costumer;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,11 +15,6 @@ import it.dstech.ortofrutta.Scontrino;
 import it.dstech.ortofrutta.gestionedb.GestioneDB;
 
 public class ServletAcquisto extends HttpServlet {
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		req.setAttribute("messaggio", "hai provato a fare l'accesso all'aggiunta di un prodotto dalla get");
-//		req.getRequestDispatcher("erroreDoGet.jsp").forward(req, resp);
-//	}
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		double totale = Double.parseDouble(req.getParameter("totale"));
@@ -34,6 +29,7 @@ public class ServletAcquisto extends HttpServlet {
 			req.setAttribute("scontrino", scontrino);
 			req.setAttribute("username", username);
 			req.getRequestDispatcher("acquistoRiuscito.jsp").forward(req, resp);
+			gestioneDB.closeConnection();
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}

@@ -80,24 +80,26 @@ li {
 </head>
 
 <body>
+	<%
+		List<Carrello> elencoCarrello = (List<Carrello>) request.getAttribute("carrello");
+		Double totale = (Double) request.getAttribute("totale");
+		String username = (String) request.getAttribute("username");
+	%>
 	<div class="header">
 		<div class="titolo">
 			<h1>Ortofrutta.</h1>
 		</div>
 		<div class="navigazione">
 			<ul>
-				<li><a href="http://localhost:8080/servlet-ortofrutta/home?">Home</a></li>
-				<li><a href="http://localhost:8080/servlet-ortofrutta/about.jsp">About</a></li>
-				<li><a href="">Contact</a></li>
-				<li><a href="">More</a></li>
+				<li><a href="http://localhost:8080/servlet-ortofrutta/accesso?username=<%=username%>&accedi=Accedi">Profilo</a></li>
+				<li><a href="http://localhost:8080/servlet-ortofrutta/storico-acquisti?username=<%=username%>&accedi=Accedi">Acquisti</a></li>
+				<li><a href="http://localhost:8080/servlet-ortofrutta/compra?username=<%=username%>&accedi=Accedi">Ordina</a></li>
+				<li><a
+					href="http://localhost:8080/servlet-ortofrutta/about.jsp">About</a></li>
+				<li><a href="http://localhost:8080/servlet-ortofrutta/">LogOut</a></li>
 			</ul>
 		</div>
 	</div>
-	<%
-		List<Carrello> elencoCarrello = (List<Carrello>) request.getAttribute("carrello");
-		Double totale = (Double) request.getAttribute("totale");
-		String username = (String) request.getAttribute("username");
-	%>
 	<div class="contenuto">
 		<div class="header">
 			<div class="titolo">
